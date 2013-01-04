@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=systemd-git
-pkgver=20130103
+pkgver=20130104
 pkgrel=1
 pkgdesc="system and service manager"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ md5sums=('fd5b5f04ab0a847373d357555129d4c0'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
          'fb37e34ea006c79be1c54cbb0f803414'
          'df69615503ad293c9ddf9d8b7755282d'
-	 '0571b7df2edb13bdb8106ccc3bce41ad')
+	 '1a4551879bd71c3685f1a49b7915f86a')
 
 _gitroot="git://anongit.freedesktop.org/systemd/systemd.git"
 _gitname="systemd"
