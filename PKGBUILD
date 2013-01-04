@@ -39,7 +39,7 @@ md5sums=('fd5b5f04ab0a847373d357555129d4c0'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
          'fb37e34ea006c79be1c54cbb0f803414'
          'df69615503ad293c9ddf9d8b7755282d'
-	 '1a4551879bd71c3685f1a49b7915f86a')
+	 'ba98286fd04d1a29dca17300691064b3')
 
 _gitroot="git://anongit.freedesktop.org/systemd/systemd.git"
 _gitname="systemd"
