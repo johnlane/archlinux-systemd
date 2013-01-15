@@ -1,9 +1,9 @@
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=systemd-git
-pkgver=20130104
+pkgver=20130115
 pkgrel=1
-pkgdesc="system and service manager"
+pkgdesc='system and service manager'
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
@@ -15,8 +15,9 @@ optdepends=('cryptsetup: required for encrypted block devices'
             'python2-cairo: systemd-analyze'
             'python2-gobject: systemd-analyze'
             'quota-tools: kernel-level quota management')
-provides=('systemd' 'libsystemd' 'systemd-sysvcompat' 'systemd-tools' 'udev=999')
-conflicts=('systemd' 'libsystemd' 'systemd-sysvcompat' 'systemd-tools' 'sysvinit' 'initscripts' 'udev')
+provides=('systemd' 'libsystemd' 'nss-myhostname' 'systemd-sysvcompat' 'systemd-tools' 'udev=999')
+conflicts=('systemd' 'libsystemd' 'nss-myhostname' 'systemd-sysvcompat' 'systemd-tools' 'sysvinit' 'initscripts' 'udev')
+replaces=('nss-myhostname')
 groups=('systemd')
 options=('!libtool')
 backup=(etc/dbus-1/system.d/org.freedesktop.systemd1.conf
@@ -39,7 +40,7 @@ md5sums=('fd5b5f04ab0a847373d357555129d4c0'
          'e99e9189aa2f6084ac28b8ddf605aeb8'
          'fb37e34ea006c79be1c54cbb0f803414'
          'df69615503ad293c9ddf9d8b7755282d'
-	 'ba98286fd04d1a29dca17300691064b3')
+	 '4757b6f9405690e68f6e7048cc39ded1')
 
 _gitroot="git://anongit.freedesktop.org/systemd/systemd.git"
 _gitname="systemd"
@@ -77,7 +78,7 @@ build() {
       --disable-ima \
       --with-distro=arch \
       --with-sysvinit-path= \
-      --with-sysvrcd-path=
+      --with-sysvrcnd-path=
 
   make
 }
@@ -112,10 +113,6 @@ package() {
 
   # get rid of RPM macros
   rm -r "$pkgdir/etc/rpm"
-
-  # can't use py3k yet with systemd-analyze -- the 'plot' verb will not work.
-  # https://pokersource.info/show_bug.cgi?id=50989
-  sed -i '1s/python$/python2/' "$pkgdir/usr/bin/systemd-analyze"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i -e 's#GROUP="dialout"#GROUP="uucp"#g' \
